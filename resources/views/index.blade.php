@@ -40,22 +40,6 @@
             right: 15px;
         }
 
-        /* Toggle */
-        .menu-icon {
-            width: 32px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-icon span {
-            height: 3px;
-            background: white;
-            width: 100%;
-            transition: 0.3s;
-        }
-
         /* Cross Animation */
         .menu-open span:nth-child(1) {
             transform: rotate(45deg) translate(6px, 6px);
@@ -81,27 +65,6 @@
             display: inline-block;
             font-size: 17px;
             text-decoration: none;
-        }
-
-        /* Mega menu */
-        .mega-menu {
-            margin-top: 1px;
-            display: none;
-            background: #0c3d63;
-            color: white;
-            padding: 20px;
-        }
-
-        .mega-section a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            padding: 0 4px 0 0;
-            border-bottom: 2px solid #ffffff;
-        }
-
-        .mega-section a:hover {
-            border-bottom: 2px solid #e5f13b;
         }
 
         .search-icon {
@@ -142,12 +105,6 @@
             <div class="top-bar">
                 {{-- LEFT side --}}
                 <div class="top-left">
-                    <div class="menu-icon" id="menuToggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
                     <div class="date">{{ now()->translatedFormat('l, d F Y') }}</div>
                 </div>
                 {{-- CENTER - LOGO --}}
@@ -166,29 +123,6 @@
                 <input type="text" class="form-control search-input" placeholder="অনুসন্ধান করুন...">
             </div>
 
-            {{-- MEGA MENU --}}
-            <div class="mega-menu" id="megaMenu">
-                @foreach ($categories as $category)
-                    <div class="row">
-
-                        {{-- LEFT SIDE CATEGORY TITLE --}}
-                        <div class="col-auto mega-section">
-                            <a href="{{ url('subcategory/' . $category->slug) }}">{{ $category->title }}</a>
-                        </div>
-
-                        {{-- RIGHT SIDE SUBCATEGORIES --}}
-                        <div class="col-auto mega-section">
-                            @if ($category->subCategories->count())
-                                @foreach ($category->subCategories as $sub)
-                                    <a href="{{ url('subcategory/' . $sub->slug) }}">{{ $sub->title }}</a>
-                                @endforeach
-                            @endif
-                        </div>
-
-                    </div>
-                @endforeach
-            </div>
-
         </header>
 
         {{-- CATEGORY BAR --}}
@@ -202,10 +136,7 @@
     </div>
 
     <script>
-        const menuToggle = document.getElementById("menuToggle");
-        const megaMenu = document.getElementById("megaMenu");
         const categoryBar = document.getElementById("categoryBar");
-
         const searchIcon = document.querySelector(".search-icon");
         const searchPanel = document.getElementById("searchPanel");
 
@@ -217,22 +148,11 @@
 
         function updatePanels() {
             // Category bar is hidden if any panel is open
-            categoryBar.style.display = (menuOpen || searchOpen) ? "none" : "block";
-
-            // Mega menu
-            megaMenu.style.display = menuOpen ? "block" : "none";
-            menuToggle.classList.toggle("menu-open", menuOpen);
+            categoryBar.style.display = (searchOpen) ? "none" : "block";
 
             // Search panel
             searchPanel.style.display = searchOpen ? "block" : "none";
         }
-
-        // Mega menu toggle
-        menuToggle.addEventListener("click", function() {
-            menuOpen = !menuOpen;
-            if (menuOpen) searchOpen = false; // close search if opening menu
-            updatePanels();
-        });
 
         // Search toggle
         searchIcon.addEventListener("click", function() {

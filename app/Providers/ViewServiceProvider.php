@@ -27,12 +27,7 @@ class ViewServiceProvider extends ServiceProvider
 
             if ($route && Route::is('frontend.*')) {
 
-                $categories = Category::with(['subCategories' => function ($q) {
-                    $q->where('is_menu', true)
-                      ->where('status', true)
-                      ->orderBy('id', 'ASC');
-                }])
-                ->where('is_menu', true)
+                $categories = Category::where('is_menu', true)
                 ->where('status', true)
                 ->orderBy('id', 'ASC')
                 ->get(['id', 'title', 'slug', 'is_menu', 'status']);
