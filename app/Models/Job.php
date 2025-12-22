@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'apply_value', 'salary', 'vacancy', 'company', 'educational', 'experience', 'additional', 'type', 'gender', 'apply', 'category_id', 'division_id', 'district_id', 'thana_id', 'user_id', 'location', 'source_link', 'slug', 'description', 'views'];
+    protected $fillable = ['title', 'apply_value', 'salary', 'vacancy', 'company', 'educational', 'experience', 'additional', 'thumb', 'attachment', 'type', 'gender', 'apply', 'category_id', 'division_id', 'district_id', 'thana_id', 'user_id', 'location', 'source_link', 'slug', 'status', 'description', 'meta_title', 'meta_keyword', 'meta_description', 'views'];
 
     /**
      * Get the category that owns the Job
@@ -29,5 +29,4 @@ class Job extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
-
 }

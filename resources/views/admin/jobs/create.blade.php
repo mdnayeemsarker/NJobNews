@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @php
+    $selector = true;
     $slug = true;
 @endphp
 
@@ -162,6 +163,46 @@
 
                 </div>
             </div>
+            
+            {{-- Job Meta Data --}}
+            <div class="card">
+                <h3 class="card-header card-title">SEO Meta</h3>
+                <div class="card-body">
+
+                    <div class="form-group mb-3">
+                        <label for="meta_title">Meta Title</label>
+                        <input type="text" name="meta_title" id="meta_title"
+                            class="form-control @error('meta_title') is-invalid @enderror"
+                            value="{{ old('meta_title') }}">
+                        @error('meta_title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="meta_keywords">Meta Keywords</label>
+                        <input type="text" name="meta_keywords" id="meta_keywords"
+                            class="form-control @error('meta_keywords') is-invalid @enderror"
+                            value="{{ old('meta_keywords') }}">
+                        @error('meta_keywords')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="meta_description">Meta Description</label>
+                        <textarea name="meta_description" id="meta_description" rows="5"
+                            class="form-control @error('meta_description') is-invalid @enderror">{{ old('meta_description') }}</textarea>
+                        @error('meta_description')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- RIGHT --}}
+        <div class="col-lg-4">
 
             {{-- Apply Info --}}
             <div class="card">
@@ -203,14 +244,8 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                 </div>
             </div>
-
-        </div>
-
-        {{-- RIGHT --}}
-        <div class="col-lg-4">
 
             {{-- Category --}}
             <div class="card mb-3">
@@ -277,6 +312,55 @@
                         @enderror
                     </div>
 
+                </div>
+            </div>
+
+            {{-- Gallery --}}
+            <div class="card mb-3">
+                <h3 class="card-header card-title">Gallery</h3>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="file-selector-container col-lg-12">
+                            <div class="file-selector-item single-selector col-lg-12" data-toggle="modal"
+                                data-target="#fileSelectorModal" data-selection-type="single" data-input-name="thumb"
+                                data-title="Select Thumbnail">
+                                <i class="fa fa-file"></i>
+                                <span>Select Thumbnail</span>
+                                <div class="selected-files single-file-names mt-2 text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="file-selector-container col-lg-12">
+                            <div class="file-selector-item single-selector col-lg-12" data-toggle="modal"
+                                data-target="#fileSelectorModal" data-selection-type="single" data-input-name="attachment"
+                                data-title="Select Attachment">
+                                <i class="fa fa-file"></i>
+                                <span>Select Attachment</span>
+                                <div class="selected-files single-file-names mt-2 text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {{-- Status --}}
+            <div class="card mb-3">
+                <h3 class="card-header card-title">Status</h3>
+                <div class="card-body">                    
+                    <div class="form-group mb-3">
+                        <label for="status">Job Status</label>
+                        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror"
+                            required>
+                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>
+                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
+                        </select>
+                        @error('status')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>  
                 </div>
             </div>
 

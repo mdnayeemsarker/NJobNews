@@ -55,6 +55,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::post('ad/{id}/status', [AdController::class, 'updateStatus'])->name('ad.update.status');
 
         Route::resource('jobs', JobController::class);
+        Route::get('get-districts/{divisionId}', [JobController::class, 'getDistricts'])->name('get.districts');
+        Route::get('get-thanas/{districtId}', [JobController::class, 'getThanas'])->name('get.thanas');
         Route::post('job/{id}/status', [JobController::class, 'updateStatus'])->name('jobs.update.status');
 
         Route::get('/manage-user', [HomeController::class, 'user_manage'])->name('user.manage');

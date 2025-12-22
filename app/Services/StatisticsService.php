@@ -2,23 +2,32 @@
 
 namespace App\Services;
 
+use App\Models\Ad;
 use Carbon\Carbon;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Visit;
 use App\Models\Category;
 use App\Models\JobVisit;
+use App\Models\Page;
+use App\Models\Permission;
+use App\Models\Role;
+use App\Models\Upload;
 use Illuminate\Support\Facades\Request;
 
 class StatisticsService
 {
     public function getStatistics()
     {
-        $totalUser = User::where('type', '!=', 'admin')->count();
         $category = Category::count();
+        $page = Page::count();
+        $role = Role::count();
+        $permission = Permission::count();
+        $ad = Ad::count();
+        $upload = Upload::count();
         $jobStatistics = $this->getJobStatistics();
         $visitorStatistics = $this->getVisitorStatistics();
-        return compact('jobStatistics', 'category', 'visitorStatistics');
+        return compact('jobStatistics', 'category', 'page', 'role', 'permission', 'ad', 'upload', 'visitorStatistics');
     }
     public function getSingleStatistics($model, $column, $jobId)
     {

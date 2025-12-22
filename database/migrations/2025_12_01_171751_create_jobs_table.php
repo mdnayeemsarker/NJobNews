@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('educational')->nullable();
             $table->string('experience')->nullable();
             $table->string('additional')->nullable();
+            $table->string('thumb')->nullable();
+            $table->string('attachment')->nullable();
             $table->enum('type', ['full-time', 'part-time', 'contract'])->default('full-time');
             $table->enum('gender', ['male', 'female', 'both', 'other'])->default('other');
             $table->enum('apply', ['url', 'email', 'in-person', 'address']);
@@ -32,7 +34,11 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('source_link')->nullable();
             $table->string('slug')->unique();
+            $table->boolean('status')->default(true);
             $table->longText('description')->nullable();
+            $table->longText('meta_title')->nullable();
+            $table->longText('meta_keyword')->nullable();
+            $table->longText('meta_description')->nullable();
             $table->unsignedBigInteger('views')->default(0);
             $table->timestamps();
         });

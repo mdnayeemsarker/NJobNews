@@ -80,29 +80,7 @@ class FileUploadRepository implements FileUploadRepositoryInterface
         }
         return false;
     }
-
-    // public function delete($filePath)
-    // {
-    //     // Normalize slashes to match the operating system
-    //     $filePath = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $filePath);
-
-    //     // Convert to absolute path
-    //     $filePathN = public_path($filePath);
-
-    //     // Debugging - check if the file path is correct
-    //     // if (!file_exists($filePathN)) {
-    //     //     dd("File does not exist", $filePathN);
-    //     // }
-
-    //     // dd($filePathN, file_exists($filePathN), scandir(dirname($filePathN)));
-
-    //     // Delete the file
-    //     if (unlink($filePathN)) {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
+    
     /**
      * Determine the file type based on MIME type.
      *

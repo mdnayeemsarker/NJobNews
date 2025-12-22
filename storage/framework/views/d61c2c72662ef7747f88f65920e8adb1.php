@@ -1,4 +1,5 @@
 <?php
+    $selector = true;
     $slug = true;
 ?>
 
@@ -221,6 +222,88 @@ unset($__errorArgs, $__bag); ?>
 
             
             <div class="card">
+                <h3 class="card-header card-title">SEO Meta</h3>
+                <div class="card-body">
+
+                    <div class="form-group mb-3">
+                        <label for="meta_title">Meta Title</label>
+                        <input type="text" name="meta_title" id="meta_title"
+                            class="form-control <?php $__errorArgs = ['meta_title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                            value="<?php echo e(old('meta_title', $job->meta_title)); ?>">
+                        <?php $__errorArgs = ['meta_title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="meta_keywords">Meta Keywords</label>
+                        <input type="text" name="meta_keywords" id="meta_keywords"
+                            class="form-control <?php $__errorArgs = ['meta_keywords'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                            value="<?php echo e(old('meta_keywords', $job->meta_keywords)); ?>">
+                        <?php $__errorArgs = ['meta_keywords'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="meta_description">Meta Description</label>
+                        <textarea name="meta_description" id="meta_description" rows="5"
+                            class="form-control <?php $__errorArgs = ['meta_description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"><?php echo e(old('meta_description', $job->meta_description)); ?></textarea>
+                        <?php $__errorArgs = ['meta_description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-4">
+
+            
+            <div class="card">
                 <h3 class="card-header card-title">Apply Information</h3>
                 <div class="card-body">
 
@@ -251,11 +334,6 @@ unset($__errorArgs, $__bag); ?>
 
                 </div>
             </div>
-
-        </div>
-
-        
-        <div class="col-lg-4">
 
             
             <div class="card mb-3">
@@ -293,6 +371,82 @@ unset($__errorArgs, $__bag); ?>
                             value="<?php echo e(old('location', $job->location)); ?>">
                     </div>
 
+                </div>
+            </div>
+
+            
+            <div class="card mb-3">
+                <h3 class="card-header card-title">Gallery</h3>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="file-selector-container col-lg-12">
+                            <div class="file-selector-item single-selector col-lg-12" data-toggle="modal"
+                                data-target="#fileSelectorModal" data-selection-type="single" data-input-name="thumb"
+                                data-title="Select Thumbnail">
+                                <i class="fa fa-file"></i>
+                                <span>Select Thumbnail</span>
+                                <div class="selected-files single-file-names mt-2 text-muted"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <?php if($job->thumb): ?>
+                                <img src="<?php echo e(get_file_url($job->thumb)); ?>" alt="Current Image" class="img-thumbnail"
+                                    style="max-width: 100px;">
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="file-selector-container col-lg-12">
+                            <div class="file-selector-item single-selector col-lg-12" data-toggle="modal"
+                                data-target="#fileSelectorModal" data-selection-type="single"
+                                data-input-name="attachment" data-title="Select Attachment">
+                                <i class="fa fa-file"></i>
+                                <span>Select Attachment</span>
+                                <div class="selected-files single-file-names mt-2 text-muted"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <?php if($job->attachment): ?>
+                                <a href="<?php echo e(get_file_url($job->attachment)); ?>" target="_blank"
+                                    rel="noopener noreferrer">View Attachment</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <div class="card mb-3">
+                <h3 class="card-header card-title">Status</h3>
+                <div class="card-body">
+                    <div class="form-group mb-3">
+                        <label for="status">Job Status</label>
+                        <select name="status" id="status" class="form-control <?php $__errorArgs = ['status'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                            required>
+                            <option value="1" <?php echo e(old('status', $job->status) == 1 ? 'selected' : ''); ?>>Active
+                            </option>
+                            <option value="0" <?php echo e(old('status', $job->status) == 0 ? 'selected' : ''); ?>>Inactive
+                            </option>
+                        </select>
+                        <?php $__errorArgs = ['status'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
                 </div>
             </div>
 
