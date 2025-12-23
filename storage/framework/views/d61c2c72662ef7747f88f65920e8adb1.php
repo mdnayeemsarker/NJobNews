@@ -304,6 +304,117 @@ unset($__errorArgs, $__bag); ?>
 
             
             <div class="card">
+                <h3 class="card-header card-title">Application Schedule</h3>
+
+                <div class="card-body">
+
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="start_date">Start Date *</label>
+                            <input type="date" name="start_date" id="start_date"
+                                class="form-control <?php $__errorArgs = ['start_date'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                value="<?php echo e(old('start_date', isset($job) ? $job->start_date : '')); ?>" required>
+                            <?php $__errorArgs = ['start_date'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="invalid-feedback"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="start_time">Start Time</label>
+                            <input type="time" name="start_time" id="start_time"
+                                class="form-control <?php $__errorArgs = ['start_time'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                value="<?php echo e(old('start_time', isset($job) ? $job->start_time : '')); ?>">
+                            <?php $__errorArgs = ['start_time'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="invalid-feedback"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+                    </div>
+
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="deadline_date">Deadline Date *</label>
+                            <input type="date" name="deadline_date" id="deadline_date"
+                                class="form-control <?php $__errorArgs = ['deadline_date'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                value="<?php echo e(old('deadline_date', isset($job) ? $job->deadline_date : '')); ?>" required>
+                            <?php $__errorArgs = ['deadline_date'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="invalid-feedback"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="deadline_time">Deadline Time</label>
+                            <input type="time" name="deadline_time" id="deadline_time"
+                                class="form-control <?php $__errorArgs = ['deadline_time'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                value="<?php echo e(old('deadline_time', isset($job) ? $job->deadline_time : '')); ?>">
+                            <?php $__errorArgs = ['deadline_time'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <div class="invalid-feedback"><?php echo e($message); ?></div>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <div class="card">
                 <h3 class="card-header card-title">Apply Information</h3>
                 <div class="card-body">
 

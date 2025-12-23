@@ -26,6 +26,10 @@ return new class extends Migration
             $table->enum('type', ['full-time', 'part-time', 'contract'])->default('full-time');
             $table->enum('gender', ['male', 'female', 'both', 'other'])->default('other');
             $table->enum('apply', ['url', 'email', 'in-person', 'address']);
+            $table->date('start_date')->nullable();
+            $table->time('start_time')->nullable();
+            $table->date('deadline_date')->nullable();
+            $table->time('deadline_time')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->foreignId('division_id')->nullable()->constrained('divisions')->onDelete('set null');
             $table->foreignId('district_id')->nullable()->constrained('districts')->onDelete('set null');
@@ -35,9 +39,9 @@ return new class extends Migration
             $table->string('source_link')->nullable();
             $table->string('slug')->unique();
             $table->boolean('status')->default(true);
+            $table->string('meta_title')->nullable();
+            $table->text('meta_keyword')->nullable();
             $table->longText('description')->nullable();
-            $table->longText('meta_title')->nullable();
-            $table->longText('meta_keyword')->nullable();
             $table->longText('meta_description')->nullable();
             $table->unsignedBigInteger('views')->default(0);
             $table->timestamps();

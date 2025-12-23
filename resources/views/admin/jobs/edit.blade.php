@@ -189,6 +189,61 @@
         {{-- RIGHT --}}
         <div class="col-lg-4">
 
+            {{-- Application Schedule --}}
+            <div class="card">
+                <h3 class="card-header card-title">Application Schedule</h3>
+
+                <div class="card-body">
+
+                    {{-- Start Date & Time --}}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="start_date">Start Date *</label>
+                            <input type="date" name="start_date" id="start_date"
+                                class="form-control @error('start_date') is-invalid @enderror"
+                                value="{{ old('start_date', isset($job) ? $job->start_date : '') }}" required>
+                            @error('start_date')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="start_time">Start Time</label>
+                            <input type="time" name="start_time" id="start_time"
+                                class="form-control @error('start_time') is-invalid @enderror"
+                                value="{{ old('start_time', isset($job) ? $job->start_time : '') }}">
+                            @error('start_time')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    {{-- Deadline Date & Time --}}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="deadline_date">Deadline Date *</label>
+                            <input type="date" name="deadline_date" id="deadline_date"
+                                class="form-control @error('deadline_date') is-invalid @enderror"
+                                value="{{ old('deadline_date', isset($job) ? $job->deadline_date : '') }}" required>
+                            @error('deadline_date')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="deadline_time">Deadline Time</label>
+                            <input type="time" name="deadline_time" id="deadline_time"
+                                class="form-control @error('deadline_time') is-invalid @enderror"
+                                value="{{ old('deadline_time', isset($job) ? $job->deadline_time : '') }}">
+                            @error('deadline_time')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             {{-- Apply Info --}}
             <div class="card">
                 <h3 class="card-header card-title">Apply Information</h3>
