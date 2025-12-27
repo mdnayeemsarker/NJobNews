@@ -19,6 +19,6 @@ Route::prefix('v1')->group(function () {
     Route::get('setting', [SettingController::class, 'apiSetting']);
     Route::get('check-latest-payment', [SmsWorkerController::class, 'checkLatestPayment']);
     Route::post('first-sms/{id}', [SmsWorkerController::class, 'firstSms']);
+    Route::get('get-second-body/{id}', [SmsWorkerController::class, 'getSecondBody']);
     Route::post('second-sms/{id}', [SmsWorkerController::class, 'secondSms']);
-    Route::post('third-sms/{id}', [SmsWorkerController::class, 'thirdSms']);
 });

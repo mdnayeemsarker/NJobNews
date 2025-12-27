@@ -10,6 +10,7 @@ use App\Repositories\Interfaces\SmsWorkerRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class SmsWorkerController extends Controller
@@ -143,16 +144,29 @@ class SmsWorkerController extends Controller
         }
 
         // If status is NOT create
-        return ApiResponse::respond(null, true, 'Latest payment is not in create status.', Response::HTTP_ALREADY_REPORTED);
+        return ApiResponse::respond(null, false, 'Latest payment is not in create status.', Response::HTTP_ALREADY_REPORTED);
+    }
+    /**
+     * Check if the latest SMS payment is in "create" status
+     */
+    public function getSecondBody($id)
+    {
+        $latest = SmsWorker::find($id);
+
+        if (!$latest) {
+            return ApiResponse::respond(null, false, 'No record found.', Response::HTTP_NOT_FOUND);
+        }
+        return ApiResponse::respond($latest, true, 'Latest payment is in create status.', Response::HTTP_OK);
     }
     public function firstSms(Request $request, $id)
     {
+        Log::debug('First SMS Request Data: ', $request->all());
         $smsWorker = SmsWorker::find($id);
 
         if (!$smsWorker) {
             return ApiResponse::respond(null, false, 'No record found.', Response::HTTP_NOT_FOUND);
         }
-        $smsWorker->first_sms = $request->input('first_sms');
+        $smsWorker->first_sms = $request->first_sms;
         $smsWorker->status = 'sent';
         $smsWorker->save();
         return ApiResponse::respond($smsWorker, true, 'First SMS updated successfully.', Response::HTTP_OK);
@@ -164,7 +178,7 @@ class SmsWorkerController extends Controller
         if (!$smsWorker) {
             return ApiResponse::respond(null, false, 'No record found.', Response::HTTP_NOT_FOUND);
         }
-        $smsWorker->second_sms = $request->input('second_sms');
+        $smsWorker->second_sms = $request->second_sms;
         $smsWorker->status = 'wait';
         $smsWorker->save();
         return ApiResponse::respond($smsWorker, true, 'Second SMS updated successfully.', Response::HTTP_OK);
@@ -179,17 +193,5 @@ class SmsWorkerController extends Controller
         $smsWorker->status = 'paid';
         $smsWorker->save();
         return back()->with('success', 'SMS status updated to paid successfully.');
-    }
-    public function thirdSms(Request $request, $id)
-    {
-        $smsWorker = SmsWorker::find($id);
-
-        if (!$smsWorker) {
-            return ApiResponse::respond(null, false, 'No record found.', Response::HTTP_NOT_FOUND);
-        }
-        $smsWorker->third_sms = $request->input('third_sms');
-        $smsWorker->status = 'complete';
-        $smsWorker->save();
-        return ApiResponse::respond($smsWorker, true, 'Third SMS updated successfully.', Response::HTTP_OK);
     }
 }
