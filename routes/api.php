@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SmsWorkerController;
-use App\Http\Controllers\Api\AppController;
 use Illuminate\Support\Facades\Route;
 
 /*
