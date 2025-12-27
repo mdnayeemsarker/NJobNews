@@ -20,4 +20,13 @@ interface SettingRepositoryInterface
      * @return mixed
      */
     public function getSetting(string $key, $default = null);
+
+    /**
+     * Get setting by key
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getAllSetting();
 }

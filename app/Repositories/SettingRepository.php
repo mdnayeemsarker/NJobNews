@@ -38,4 +38,25 @@ class SettingRepository implements SettingRepositoryInterface
             }
         );
     }
+    /**
+     * Get setting by key
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getAllSetting()
+    {
+        return cache_remember(
+            'all_settings',
+            function () {
+                $settings = Setting::all();
+                $result = [];
+                foreach ($settings as $setting) {
+                    $result[$setting->key] = $setting->value;
+                }
+                return $result;
+            }
+        );
+    }
 }

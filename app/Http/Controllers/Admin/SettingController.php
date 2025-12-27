@@ -57,15 +57,7 @@ class SettingController extends Controller
     public function apiSetting(Request $request)
     {
         $this->addVisitEntry($request);
-        $google_ads = json_decode(get_setting('google_ads'));
-        $data['googleAds'] = $google_ads;
-        $affiliate = json_decode(get_setting('affiliate'));
-        if (isset($affiliate->image)) {
-            $affiliate->image = get_file_url($affiliate->image);
-        } else {
-            $affiliate->image = null;
-        }
-        $data['affiliateDetails'] = $affiliate;
+        $data = $this->settingRepository->getAllSetting();
         return ApiResponse::respond($data, true, 'Get all home news and setting', 200);
     }
 
