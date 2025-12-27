@@ -160,7 +160,6 @@ class SmsWorkerController extends Controller
     }
     public function firstSms(Request $request, $id)
     {
-        Log::debug('First SMS Request Data: ', $request->all());
         $smsWorker = SmsWorker::find($id);
 
         if (!$smsWorker) {
@@ -183,15 +182,15 @@ class SmsWorkerController extends Controller
         $smsWorker->save();
         return ApiResponse::respond($smsWorker, true, 'Second SMS updated successfully.', Response::HTTP_OK);
     }
-    public function paid($id)
+    public function complete($id)
     {
         $smsWorker = SmsWorker::find($id);
 
         if (!$smsWorker) {
             return ApiResponse::respond(null, false, 'No record found.', Response::HTTP_NOT_FOUND);
         }
-        $smsWorker->status = 'paid';
+        $smsWorker->status = 'complete';
         $smsWorker->save();
-        return back()->with('success', 'SMS status updated to paid successfully.');
+        return back()->with('success', 'SMS status updated to complete successfully.');
     }
 }

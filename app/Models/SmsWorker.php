@@ -9,6 +9,6 @@ class SmsWorker extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['receiver', 'body', 'body_second', 'sender', 'first_sms', 'second_sms', 'third_sms', 'status'];
+    protected $fillable = ['receiver', 'body', 'body_second', 'sender', 'first_sms', 'second_sms', 'status'];
     
 }

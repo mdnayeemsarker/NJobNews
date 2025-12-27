@@ -58,31 +58,28 @@
                             <td>{{ $sms->sender ?? '—' }}</td>
 
                             <td>
-                                <span class="badge 
-                                    @if($sms->status == 'create') badge-secondary
+                                <span
+                                    class="badge 
+                                    @if ($sms->status == 'create') badge-secondary
                                     @elseif($sms->status == 'sent') badge-info
                                     @elseif($sms->status == 'paid') badge-warning
-                                    @elseif($sms->status == 'complete') badge-success
-                                    @endif">
+                                    @elseif($sms->status == 'complete') badge-success @endif">
                                     {{ ucfirst($sms->status) }}
                                 </span>
                             </td>
 
                             <td>
-                                <a href="{{ route('sms-workers.show', $sms->id) }}"
-                                   class="btn btn-sm btn-info">
+                                <a href="{{ route('sms-workers.show', $sms->id) }}" class="btn btn-sm btn-info">
                                     <i class="fas fa-eye"></i>
                                 </a>
 
-                                <a href="{{ route('sms-workers.edit', $sms->id) }}"
-                                   class="btn btn-sm btn-warning">
+                                <a href="{{ route('sms-workers.edit', $sms->id) }}" @disabled($sms->status != 'wait')
+                                    class="btn btn-sm btn-warning @if ($sms->status != 'wait') disabled btn-secondary @endif">
                                     <i class="fas fa-edit"></i>
                                 </a>
 
-                                <form action="{{ route('sms-workers.destroy', $sms->id) }}"
-                                      method="POST"
-                                      class="d-inline"
-                                      onsubmit="return confirm('Delete this record?')">
+                                <form action="{{ route('sms-workers.destroy', $sms->id) }}" method="POST" class="d-inline"
+                                    onsubmit="return confirm('Delete this record?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger">

@@ -61,7 +61,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::post('job/{id}/status', [JobController::class, 'updateStatus'])->name('jobs.update.status');
 
         Route::resource('sms-workers', SmsWorkerController::class);
-        Route::get('/sms-workers/{id}/paid', [SmsWorkerController::class, 'paid'])->name('sms-workers.paid');
+        Route::get('/sms-workers/{id}/complete', [SmsWorkerController::class, 'complete'])->name('sms-workers.complete');
 
         Route::get('/manage-user', [HomeController::class, 'user_manage'])->name('user.manage');
         Route::get('/user/{id}/show', [HomeController::class, 'user_show'])->name('user.show');

@@ -28,7 +28,6 @@ class StoreSmsWorkerRequest extends FormRequest
             'sender'     => ['nullable', 'string', 'max:20'],
             'first_sms'  => ['nullable', 'string', 'max:255'],
             'second_sms' => ['nullable', 'string', 'max:255'],
-            'third_sms' => ['nullable', 'string', 'max:255'],
             'status'     => ['nullable', 'in:create,sent,paid,complete'],
         ];
     }
