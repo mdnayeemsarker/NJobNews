@@ -69,11 +69,11 @@ class SmsWorkerController extends Controller
      */
     public function show(int $id)
     {
-        $sms = $this->repo->find($id);
-        if (!$sms) {
-            return redirect()->route('sms-workers.index')->with('error', 'Sms not found.');
+        $smsWorker = $this->repo->find($id);
+        if (!$smsWorker) {
+            return redirect()->route('sms-workers.index')->with('error', 'Sms Worker not found.');
         }
-        return view('admin.sms_workers.show', compact('sms'));
+        return view('admin.sms_workers.show', compact('smsWorker'));
     }
 
     /**
@@ -84,13 +84,13 @@ class SmsWorkerController extends Controller
      */
     public function edit(int $id)
     {
-        $ad = $this->repo->find($id);
+        $smsWorker = $this->repo->find($id);
 
-        if (!$ad) {
+        if (!$smsWorker) {
             return redirect()->route('sms-workers.index')->with('error', 'Sms Worker not found.');
         }
 
-        return view('admin.sms_workers.edit', compact('ad'));
+        return view('admin.sms_workers.edit', compact('smsWorker'));
     }
 
     /**

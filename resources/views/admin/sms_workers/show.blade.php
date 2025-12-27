@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label class="col-lg-3 font-weight-bold">Receiver Number</label>
             <div class="col-lg-9">
-                <p class="form-control-plaintext">{{ $sms->receiver }}</p>
+                <p class="form-control-plaintext">{{ $smsWorker->receiver }}</p>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
         <div class="form-group row">
             <label class="col-lg-3 font-weight-bold">Sender</label>
             <div class="col-lg-9">
-                <p class="form-control-plaintext">{{ $sms->sender }}</p>
+                <p class="form-control-plaintext">{{ $smsWorker->sender }}</p>
             </div>
         </div>
 
@@ -47,7 +47,7 @@
         <div class="form-group row">
             <label class="col-lg-3 font-weight-bold">Message Body</label>
             <div class="col-lg-9">
-                <textarea class="form-control" rows="3" readonly>{{ $sms->body }}</textarea>
+                <textarea class="form-control" rows="3" readonly>{{ $smsWorker->body }}</textarea>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
         <div class="form-group row">
             <label class="col-lg-3 font-weight-bold">First SMS</label>
             <div class="col-lg-9">
-                <textarea class="form-control" rows="2" readonly>{{ $sms->first_sms ?? '-' }}</textarea>
+                <textarea class="form-control" rows="2" readonly>{{ $smsWorker->first_sms ?? 'Waiting' }}</textarea>
             </div>
         </div>
 
@@ -63,7 +63,15 @@
         <div class="form-group row">
             <label class="col-lg-3 font-weight-bold">Second SMS</label>
             <div class="col-lg-9">
-                <textarea class="form-control" rows="2" readonly>{{ $sms->second_sms ?? '-' }}</textarea>
+                <textarea class="form-control" rows="2" readonly>{{ $smsWorker->second_sms ?? 'Waiting' }}</textarea>
+            </div>
+        </div>
+
+        {{-- Third SMS --}}
+        <div class="form-group row">
+            <label class="col-lg-3 font-weight-bold">Third SMS</label>
+            <div class="col-lg-9">
+                <textarea class="form-control" rows="2" readonly>{{ $smsWorker->third_sms ?? 'Waiting' }}</textarea>
             </div>
         </div>
 
@@ -79,8 +87,8 @@
                         'complete' => 'success'
                     ];
                 @endphp
-                <span class="badge badge-{{ $statusColors[$sms->status] ?? 'secondary' }}">
-                    {{ strtoupper($sms->status) }}
+                <span class="badge badge-{{ $statusColors[$smsWorker->status] ?? 'secondary' }}">
+                    {{ strtoupper($smsWorker->status) }}
                 </span>
             </div>
         </div>
@@ -90,7 +98,7 @@
             <label class="col-lg-3 font-weight-bold">Created At</label>
             <div class="col-lg-9">
                 <p class="form-control-plaintext">
-                    {{ $sms->created_at->format('d M Y, h:i A') }}
+                    {{ $smsWorker->created_at->format('d M Y, h:i A') }}
                 </p>
             </div>
         </div>
@@ -100,7 +108,7 @@
             <label class="col-lg-3 font-weight-bold">Updated At</label>
             <div class="col-lg-9">
                 <p class="form-control-plaintext">
-                    {{ $sms->updated_at->format('d M Y, h:i A') }}
+                    {{ $smsWorker->updated_at->format('d M Y, h:i A') }}
                 </p>
             </div>
         </div>
@@ -108,7 +116,7 @@
     </div>
 
     <div class="card-footer">
-        <a href="{{ route('sms-workers.paid') }}" class="btn btn-secondary">
+        <a href="{{ route('sms-workers.paid', $smsWorker->id) }}" class="btn btn-primary">
             Paid
         </a>
         <a href="{{ route('sms-workers.index') }}" class="btn btn-secondary">
