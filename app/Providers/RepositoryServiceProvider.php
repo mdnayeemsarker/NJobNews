@@ -6,16 +6,16 @@ use App\Repositories\AdsRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\FileUploadRepository;
 use App\Repositories\Interfaces\AdsRepositoryInterface;
-use App\Repositories\PostRepository;
 use App\Repositories\SettingRepository;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\FileUploadRepositoryInterface;
 use App\Repositories\Interfaces\JobRepositoryInterface;
 use App\Repositories\Interfaces\PageRepositoryInterface;
 use App\Repositories\Interfaces\SettingRepositoryInterface;
-use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Repositories\Interfaces\SmsWorkerRepositoryInterface;
 use App\Repositories\JobRepository;
 use App\Repositories\PageRepository;
+use App\Repositories\SmsWorkerRepository;
 use App\Services\FileUploadService;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,8 +35,8 @@ class RepositoryServiceProvider extends ServiceProvider
         // Bind AdsRepositoryInterface to AdsRepository
         $this->app->bind(AdsRepositoryInterface::class, AdsRepository::class);
 
-        // Bind PostRepositoryInterface to PostRepository
-        $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
+        // Bind SmsWorkerRepositoryInterface to SmsWorkerRepository
+        $this->app->bind(SmsWorkerRepositoryInterface::class, SmsWorkerRepository::class);
 
         // Bind JobRepositoryInterface to JobRepository
         $this->app->bind(JobRepositoryInterface::class, JobRepository::class);

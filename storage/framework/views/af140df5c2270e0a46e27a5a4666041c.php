@@ -88,13 +88,12 @@
         </div>
     </div>
     <div class="row">
-        <section class="col-lg-4 connectedSortable">
+        <section class="col-lg-6 connectedSortable">
             <div class="row">
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-4 col-4">
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php echo e($upload); ?></h3>
-
                             <p>Upload</p>
                         </div>
                         <div class="icon">
@@ -104,11 +103,10 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-4 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3><?php echo e($ad); ?></h3>
-
                             <p>Ad</p>
                         </div>
                         <div class="icon">
@@ -118,9 +116,22 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3><?php echo e($smsWorker); ?></h3>
+                            <p>Sms</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="<?php echo e(route('sms-workers.index')); ?>" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="col-lg-8 connectedSortable">
+        <section class="col-lg-6 connectedSortable">
             <div class="card bg-gradient-info">
                 <div class="card-header border-0">
                     <h3 class="card-title">

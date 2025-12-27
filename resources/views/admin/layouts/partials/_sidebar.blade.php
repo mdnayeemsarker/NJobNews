@@ -37,6 +37,13 @@
                         <p>Jobs</p>
                     </a>
                 </li>
+                <li class="nav-item {{ hasPermission('sms-workers') ? '' : 'd-none' }}">
+                    <a href="{{ route('sms-workers.index') }}"
+                        class="nav-link @if (request()->routeIs(config('menu.sms_workers_active'))) active @endif">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Sms Workers</p>
+                    </a>
+                </li>
                 <li class="nav-item {{ hasPermission('pages') ? '' : 'd-none' }}">
                     <a href="{{ route('pages.index') }}"
                         class="nav-link @if (request()->routeIs(config('menu.page_active'))) active @endif">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SmsWorkerController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
@@ -58,6 +59,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('get-districts/{divisionId}', [JobController::class, 'getDistricts'])->name('get.districts');
         Route::get('get-thanas/{districtId}', [JobController::class, 'getThanas'])->name('get.thanas');
         Route::post('job/{id}/status', [JobController::class, 'updateStatus'])->name('jobs.update.status');
+
+        Route::resource('sms-workers', SmsWorkerController::class);
+        Route::get('/sms-workers/{id}/paid', [SmsWorkerController::class, 'paid'])->name('sms-workers.paid');
 
         Route::get('/manage-user', [HomeController::class, 'user_manage'])->name('user.manage');
         Route::get('/user/{id}/show', [HomeController::class, 'user_show'])->name('user.show');

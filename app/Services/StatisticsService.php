@@ -12,6 +12,7 @@ use App\Models\JobVisit;
 use App\Models\Page;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\SmsWorker;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Request;
 
@@ -25,9 +26,10 @@ class StatisticsService
         $permission = Permission::count();
         $ad = Ad::count();
         $upload = Upload::count();
+        $smsWorker = SmsWorker::count();
         $jobStatistics = $this->getJobStatistics();
         $visitorStatistics = $this->getVisitorStatistics();
-        return compact('jobStatistics', 'category', 'page', 'role', 'permission', 'ad', 'upload', 'visitorStatistics');
+        return compact('jobStatistics', 'category', 'page', 'role', 'permission', 'ad', 'upload', 'smsWorker', 'visitorStatistics');
     }
     public function getSingleStatistics($model, $column, $jobId)
     {

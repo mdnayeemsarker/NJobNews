@@ -37,6 +37,13 @@
                         <p>Jobs</p>
                     </a>
                 </li>
+                <li class="nav-item <?php echo e(hasPermission('sms-workers') ? '' : 'd-none'); ?>">
+                    <a href="<?php echo e(route('sms-workers.index')); ?>"
+                        class="nav-link <?php if(request()->routeIs(config('menu.sms_workers_active'))): ?> active <?php endif; ?>">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Sms Workers</p>
+                    </a>
+                </li>
                 <li class="nav-item <?php echo e(hasPermission('pages') ? '' : 'd-none'); ?>">
                     <a href="<?php echo e(route('pages.index')); ?>"
                         class="nav-link <?php if(request()->routeIs(config('menu.page_active'))): ?> active <?php endif; ?>">
